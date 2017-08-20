@@ -18,45 +18,23 @@ int main() {
 	while (!q.empty()) {
 		int currentPosition = q.front();
 		q.pop();
-		if (currentPosition * 2 <= MAX) {
-			if (visit[currentPosition * 2] == false) {
-				q.push(currentPosition * 2);
-				visit[currentPosition * 2] = true;
-				d[currentPosition * 2] = d[currentPosition] + 1;
-				COUNT[currentPosition * 2] = COUNT[currentPosition];
+		for (int nextPosition : {currentPosition * 2, currentPosition + 1, currentPosition - 1})
+		{
+			if (nextPosition <= MAX && nextPosition >= 0) {
+				if (visit[nextPosition] == false) {
+					q.push(nextPosition);
+					visit[nextPosition] = true;
+					d[nextPosition] = d[currentPosition] + 1;
+					COUNT[nextPosition] = COUNT[currentPosition];
+
+				}
+				else if (d[nextPosition] == d[currentPosition] + 1) {
+					COUNT[nextPosition] += COUNT[currentPosition];
+				}
 
 			}
-			else if (d[currentPosition * 2] == d[currentPosition] + 1){
-				COUNT[currentPosition * 2] += COUNT[currentPosition];
-			}
-
 		}
-
-		if (currentPosition + 1 <= MAX) {
-			if (visit[currentPosition + 1] == false) {
-				q.push(currentPosition + 1);
-				visit[currentPosition + 1] = true;
-				d[currentPosition + 1] = d[currentPosition] + 1;
-				COUNT[currentPosition + 1] = COUNT[currentPosition];
-			}
-			else if (d[currentPosition + 1] == d[currentPosition] + 1) {
-				COUNT[currentPosition + 1] += COUNT[currentPosition];
-			}	
-		}
-
-		if (currentPosition - 1 >= 0) {
-			if (visit[currentPosition - 1] == false) {
-				q.push(currentPosition - 1);
-				visit[currentPosition - 1] = true;
-				d[currentPosition - 1] = d[currentPosition] + 1;
-				COUNT[currentPosition - 1] = COUNT[currentPosition];
-
-			}
-			else if (d[currentPosition - 1] == d[currentPosition] + 1) {
-				COUNT[currentPosition - 1] += COUNT[currentPosition];
-			}
-			
-		}
+		
 	}
 
 	printf("%d\n", d[K]);
