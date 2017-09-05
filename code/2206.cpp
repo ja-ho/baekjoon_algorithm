@@ -20,7 +20,7 @@ int main() {
 			scanf("%1d", &map[i][j]);
 		}		
 	}
-	
+		
 	answer = bfs(N, M);
 	printf("%d\n", answer);
 
@@ -66,5 +66,3 @@ int bfs(int N, int M)
 
 	return answer;
 }
-
-//Todo: check map and d
