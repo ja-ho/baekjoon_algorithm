@@ -22,8 +22,7 @@ int main() {
 	}
 	
 	answer = bfs(N, M);
-	if(answer == 0) printf("-1\n");
-	else printf("%d\n", answer);
+	printf("%d\n", answer);
 
 	return 0;
 }
@@ -32,6 +31,7 @@ int bfs(int N, int M)
 {
 	queue<tuple<int, int, int>> q;
 	q.push(make_tuple(1,1,0));
+	d[1][1][0] = 1;
 	while(!q.empty()) {
 		int currentX, currentY, isBreak;
 		tie(currentX, currentY, isBreak) = q.front();
@@ -44,10 +44,27 @@ int bfs(int N, int M)
 				if(map[nextX][nextY] == 0 && d[nextX][nextY][isBreak] == 0) {
 					d[nextX][nextY][isBreak] = d[currentX][currentY][isBreak] + 1; 
 					q.push(make_tuple(nextX, nextY, isBreak));
-				}				}
+				}
+
+				if(isBreak == 0 && map[nextX][nextY] == 1 && d[nextX][nextY][isBreak] == 0) {
+					d[nextX][nextY][isBreak + 1] = d[currentX][currentY][isBreak] + 1;
+					q.push(make_tuple(nextX, nextY, isBreak + 1));
+				}
 			}
 		}
 	}
+	int answer;
 
-	return visit[N][M];
+	if(d[N][M][0]!= 0 && d[N][M][1]!=0) {
+		answer = min(d[N][M][0], d[N][M][1]);
+	} else if (d[N][M][0]!=0) {
+		answer = d[N][M][0];
+	} else if (d[N][M][1]!=0) {
+		answer = d[N][M][1];
+	} else answer = -1;
+
+
+	return answer;
 }
+
+//Todo: check map and d
