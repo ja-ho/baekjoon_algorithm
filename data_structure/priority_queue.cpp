@@ -77,7 +77,7 @@ int CHeapManager::m_ReturnPreference(int nGetIndex)
 		return m_ReturnLeft(nGetIndex);
 	}
 	else {
-		if (Heap[m_ReturnLeft(nGetIndex)] < Heap[m_ReturnRight(nGetIndex)]) {
+		if (Heap[m_ReturnLeft(nGetIndex)] > Heap[m_ReturnRight(nGetIndex)]) {
 			return m_ReturnRight(nGetIndex);
 		}
 		else
@@ -130,9 +130,22 @@ void CHeapManager::m_Delete()
 			}
 			else
 			{
-				
+				Heap[nLastParentIndex] = Heap[nChildIndex];
+				nLastParentIndex = nChildIndex;
 			}
 		}
-	
+
+		Heap[nLastParentIndex] = nLastNodeData;
+		m_nDataNumber--;	
 	}
+}
+
+void CHeapManager::m_Print()
+{
+	cout << m_nDataNumber << "개의 데이터를 저장 중" << endl;
+
+	for (int i = 1; i <= m_nDataNumber; i++) {
+		cout << i << "번째 : " << Heap[i] << endl;
+	}
+
 }
