@@ -7,14 +7,6 @@ using namespace std;
 
 vector<vector<pair<int, int>>> street;
 
-//typedef struct _edge {
-//	int to, cost;
-//	edge(int to, int cost) : to(to), cost(cost) {
-//		//to = to; cost = cost;
-//	}
-//} edge;
-
-//vector<edge> street[1001];
 int answer[1001];
 int N, M;
 
@@ -29,7 +21,8 @@ void dijkstra(int start) {
 		int here_dist = -pq.top().first;
 		pq.pop();
 
-		if (here_dist > dist[here]) continue;	//Todo : need to check
+		if (here_dist > dist[here])
+			continue;	//Todo : need to check
 
 		for (int i = 0; i < street[here].size(); i++) {
 			int there = street[here][i].first;
