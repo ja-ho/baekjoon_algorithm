@@ -41,7 +41,6 @@ void go(char prize[6], int depth)
 int main() {
 	int T;
 	int tc;
-	freopen("input.txt", "r", stdin);
 	cin >> T;
 
 	for (tc = 0; tc < T; tc++) {
