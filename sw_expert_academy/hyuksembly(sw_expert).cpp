@@ -1,8 +1,6 @@
 #include <iostream>
 #include <cstdio>
-#include <cstdlib>
 #include <queue>
-#include <cstring>
 using namespace std;
 
 int Answer;
@@ -116,7 +114,6 @@ bool go()
 }
 
 int main() {
-	freopen("input.txt", "r", stdin);
 	int T, tc;
 	cin >> T;
 	for (tc = 0; tc < T; tc++) {
