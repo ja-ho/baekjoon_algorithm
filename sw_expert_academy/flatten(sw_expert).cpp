@@ -95,7 +95,6 @@ void flatten(int num_dump)
 
 int main() {
 	int tc;
-	freopen("input.txt", "r", stdin);
 	for (tc = 1; tc <= 10; tc++) {
 		int num_dump;
 		cin >> num_dump;
