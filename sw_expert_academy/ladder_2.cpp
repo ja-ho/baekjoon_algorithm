@@ -49,7 +49,6 @@ int find_distance()
 
 int main() {
 	int T;
-	freopen("input.txt", "r", stdin);
 	for (int tc = 1; tc <= 10; tc++) {
 		cin >> T;
 		int end;
