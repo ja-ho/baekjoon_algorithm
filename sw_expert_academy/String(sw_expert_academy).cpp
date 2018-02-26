@@ -30,7 +30,6 @@ int find()
 
 int main() {
 	int T;
-	freopen("input.txt", "r", stdin);
 	for (int tc = 1; tc <= 10; tc++) {
 		Answer = 0;
 		search_string.clear();
