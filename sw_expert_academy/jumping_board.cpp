@@ -25,16 +25,7 @@ int find_minimum()
 		int temp = jump_diff(jump[i], jump[i + 2]);
 		if (max_jump < temp) max_jump = temp;
 	}
-	//else {
-	//	for (int i = 1; i <= N / 2; i++) {
-	//		int temp = jump_diff(jump[i], jump[i + 2]);
-	//		if (max_jump < temp) max_jump = temp;
-	//	}
-	//	for (int i = N / 2; i < N; i++) {
-	//		int temp = jump_diff(jump[i], jump[i + 2]);
-	//		if (max_jump < temp) max_jump = temp;
-	//	}
-	//}
+
 	return max_jump;
 }
 
