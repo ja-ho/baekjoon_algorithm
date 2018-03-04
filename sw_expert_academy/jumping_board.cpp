@@ -21,22 +21,20 @@ int find_minimum()
 	if (max_jump < jump[2] - jump[0]) max_jump = jump[2] - jump[0];
 	if (max_jump < jump[1] - jump[0]) max_jump = jump[1] - jump[0];
 	
-	if (N % 2 == 1) {
-		for (int i = 1; i < N - 2; i++) {
-			int temp = jump_diff(jump[i], jump[i + 2]);
-			if (max_jump < temp) max_jump = temp;
-		}
+	for (int i = 1; i < N - 2; i++) {
+		int temp = jump_diff(jump[i], jump[i + 2]);
+		if (max_jump < temp) max_jump = temp;
 	}
-	else {
-		for (int i = 1; i <= N / 2; i++) {
-			int temp = jump_diff(jump[i], jump[i + 2]);
-			if (max_jump < temp) max_jump = temp;
-		}
-		for (int i = N / 2; i < N; i++) {
-			int temp = jump_diff(jump[i], jump[i + 2]);
-			if (max_jump < temp) max_jump = temp;
-		}
-	}
+	//else {
+	//	for (int i = 1; i <= N / 2; i++) {
+	//		int temp = jump_diff(jump[i], jump[i + 2]);
+	//		if (max_jump < temp) max_jump = temp;
+	//	}
+	//	for (int i = N / 2; i < N; i++) {
+	//		int temp = jump_diff(jump[i], jump[i + 2]);
+	//		if (max_jump < temp) max_jump = temp;
+	//	}
+	//}
 	return max_jump;
 }
 
@@ -53,7 +51,7 @@ int main() {
 			cin >> jump[i];
 		}
 		sort(jump.begin(), jump.end());
-
+		
 		Answer = find_minimum();
 
 		cout << "#" << tc << " " << Answer << endl;
