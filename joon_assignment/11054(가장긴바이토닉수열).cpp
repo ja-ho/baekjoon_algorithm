@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+#define max(a, b)	(((a) > (b)) ? (a) : (b))
+
+int a[1001];
+int d[1001];
+int d2[1001];
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	int n;
+	cin >> n;
+	for (int i = 1; i <= n; i++) {
+		cin >> a[i];
+	}
+
+	d[1] = 1;
+	for (int i = 2; i <= n; i++) {
+		d[i] = 1;
+		for (int j = i - 1; j >= 1; j--) {
+			if (a[i] > a[j]) {
+				d[i] = max(d[i], d[j] + 1);
+			}
+		}
+	}
+	d2[n] = 1;
+	for (int i = n - 1; i >= 1; i--) {
+		d2[i] = 1;
+		for (int j = i + 1; j <= n; j++) {
+			if (a[i] > a[j]) {
+				d2[i] = max(d2[i], d2[j] + 1);
+			}
+		}
+	}
+	int answer = 0;
+	for (int i = 1; i <= n; i++) {
+		answer = max(answer, d[i] + d2[i] - 1);
+	}
+	cout << answer << '\n';
+	return 0;
+}
