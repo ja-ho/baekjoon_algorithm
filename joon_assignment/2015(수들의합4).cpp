@@ -9,7 +9,7 @@ int main() {
 	int n, k;
 	map<int, long long> mp;
 	cin >> n >> k;
-	int ans = 0;
+	long long ans = 0;
 	int sum = 0;
 	mp[0] = 1;
 	for (int i = 0; i < n; i++) {
